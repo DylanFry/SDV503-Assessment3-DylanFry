@@ -7,4 +7,9 @@ This project aims to create that desired system in a timely and well-developed m
 ## Scope
 This project entails the planning, design, and development of a proof of concept for the system using JavaScipt and the terminal through Node.JS. The project will then be completed by creating user documentation.
 ## Tracking Progress
-Agile XP project managment tracks progress through short, weekly iterations that are reviewed before the next iteration begins. For this project, after each week is complete (Each Monday), the progress that has been made over the past week will be reviewed and the future tasks will be reviewed against the remaining time to determine if the progress is on track.
+Agile XP project managment tracks progress through short, weekly iterations that are reviewed before the next iteration begins. For this project, at the end of each iteration (Each Monday), I will review where I am in my timeline, and if I need to adjust the amount of work I am doing or add any new points I can do so.
+## How Issues Will Be Addressed
+If an issue arises that does not need to be fixed immediately, it will be added to the backlog to be addressed in a future sprint. If the issue is to severe to leave, any other work will be postponed to foxus on fixing the issue.
+## How Communication Will Be Handled
+Communication on this project will be handled by using GitHub's built in tools to share and get feedback on the work that is being done.
+## What Does The Program Do
