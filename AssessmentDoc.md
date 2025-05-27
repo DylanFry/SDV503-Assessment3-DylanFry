@@ -13,3 +13,4 @@ If an issue arises that does not need to be fixed immediately, it will be added 
 ## How Communication Will Be Handled
 Communication on this project will be handled by using GitHub's built in tools to share and get feedback on the work that is being done.
 ## What Does The Program Do
+The program will allow patients to view their profile information such as medical history, name, age, and profile picture. They can also update their contact details if any are incorrect.
