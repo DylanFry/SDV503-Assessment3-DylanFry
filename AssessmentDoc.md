@@ -14,3 +14,20 @@ If an issue arises that does not need to be fixed immediately, it will be added 
 Communication on this project will be handled by using GitHub's built in tools to share and get feedback on the work that is being done.
 ## What Does The Program Do
 The program will allow patients to view their profile information such as medical history, name, age, and profile picture. They can also update their contact details if any are incorrect.
+## Functional Requirements
+The program will, at a minimum, need the ability to:
+* View a patient's information including:
+  * Full name
+  * NHN
+  * Date of Birth
+  * Sex
+  * Allergies
+  * Past Operations
+  * Known Illnesses
+  * Previous Clinic/s
+* Edit the information
+* Delete any patient from the registry
+
+Since this project is using XP project management, these functions would need to be completed before I can consider functions such as a patient AND staff view
+## Measuring Success
+The success of this project will be measured by how closly to the goals laid out in the situation mentioned in the **The Problem** by the completion date of the project.
