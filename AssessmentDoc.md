@@ -31,3 +31,7 @@ The program will, at a minimum, need the ability to:
 Since this project is using XP project management, these functions would need to be completed before I can consider functions such as a patient AND staff view
 ## Measuring Success
 The success of this project will be measured by how closly to the goals laid out in the situation mentioned in the **The Problem** by the completion date of the project.
+## Summary
+To summarise, the program I will create through this project will be a patient profile registry using the command line as it's input and output. This is being created to address the issue put forward by the local District Health Board of needing a new patient managment system.
+## Why should it be approved?
+This program should be approved as it meets the requirements set forth by the Health Board without having unnecessary functions which would make it more difficult to use and harder to maitain.
