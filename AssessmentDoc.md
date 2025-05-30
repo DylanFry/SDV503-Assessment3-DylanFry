@@ -24,7 +24,8 @@ The program will, at a minimum, need the ability to:
   * Allergies
   * Past Operations
   * Known Illnesses
-  * Previous Clinic/s
+  * Clinic/s
+  * Medications
 * Edit the information
 * Delete any patient from the registry
 
