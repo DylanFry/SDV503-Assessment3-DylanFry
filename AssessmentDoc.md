@@ -36,3 +36,27 @@ The success of this project will be measured by how closly to the goals laid out
 To summarise, the program I will create through this project will be a patient profile registry using the command line as it's input and output. This is being created to address the issue put forward by the local District Health Board of needing a new patient managment system.
 ## Why should it be approved?
 This program should be approved as it meets the requirements set forth by the Health Board without having unnecessary functions which would make it more difficult to use and harder to maitain.
+## Workflow Diagram
+![PPR Diagram V1 drawio](https://github.com/user-attachments/assets/88c083f2-1e8c-4631-8af0-dda5e2b92c2e)
+This diagram shows:
+- The process begins by having the user input a patient's National Health Number (NHN)
+- It then checks if it it can find that NHN is in the database:
+  - If it is, then the information attached to that number will be displayed in a table
+  - If not, a message telling the user that the NHN doesn't exist will display and the NHN entry screen will be re-displayed
+- Once the table has been displayed, the user will then have the option to do one of the following options:
+  1. View a detailed allergy list
+  2. View a detailed past operations list
+  3. View a detailed clinics list
+  4. View a detailed known illnesses list
+  5. View taken medicine list
+  6. Edit the information attached to the NHN
+  7. Delete the patient
+  8. Go back to the NHN entering screen
+- If the user wants to view a detailed view, the program will check that the list exists to look at (i.e. there are 1 or more options)
+  - If the list does exist, it will be shown to the user. At this point, the user can return to the table view
+  - Otherwise, the user will be prompted with a message that no list can be displayed and taken back to the table
+- If the use wants to edit the information, they will be given a list of the information points which can be edited (e.g. Name, Allergies, etc.)
+  - Once the user has selected the point to edit, they will be asked what they wish to change it to. The information will then be changed and a confirmation message will tell them what information has been changed and what to
+  - At any point in this process, the user can go back to the previous page
+- If the user wishes to delete the patient profile, they will prompted with a comfirmation window
+  - If the user inputs "y", the profile will be deleted from the database and the user will be redirected to the NHN input page
