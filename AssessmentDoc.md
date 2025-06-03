@@ -60,3 +60,19 @@ This diagram shows:
   - At any point in this process, the user can go back to the previous page
 - If the user wishes to delete the patient profile, they will prompted with a comfirmation window
   - If the user inputs "y", the profile will be deleted from the database and the user will be redirected to the NHN input page
+## Code Review Checklist (Courtesy of Lucas Donald)
+- Document all functions with comments, especially for complex solutions or problems
+- Maintain consistent indentation throughout code
+- Follow DRY (Don't Repeat Yourself) principles
+- Keep line lengths reasonable and readable
+- Separate code and data (JSON, JS)
+- Maintain consistent file structure
+- Keep documentation up to date (Readme, Comments)
+- Declare variables with const or let (avoid var)
+- Use strict equality operators (=== and !==)
+- Keep functions small and focused
+- Handle errors with try-catch blocks
+- Use camelCase for variable and function names
+- Use PascalCase for class names
+- Use UPPERCASE for constants
+- Use descriptive and meaningful names
