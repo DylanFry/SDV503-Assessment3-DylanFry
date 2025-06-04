@@ -11,7 +11,6 @@ const rl = readline.createInterface( {
 // Loading .json file
 const FILE = 'MOCK_DATA.json'
 let registry = []
-
 if (fs.existsSync(FILE)) {
     try {
         registry = JSON.parse(fs.readFileSync(FILE, 'utf8'))
@@ -19,6 +18,9 @@ if (fs.existsSync(FILE)) {
         registry = []
     }
 }
+
+// Global variables
+let selectedNHN
 
 // Saving to .json file
 function savePatientRegistry() {
@@ -31,8 +33,8 @@ function inputNHN() {
     rl.question("Enter Patient NHN:", patientID => {
         registry.forEach(patient => {
             if(patient.NHN == patientID) {
-                console.log(patient.firstName, patient.lastName)
-                rl.close()
+                selectedNHN = patient.NHN
+                drawTable()
             } else {
                 notFound ++
             }
@@ -61,7 +63,25 @@ function deletePatient() {
 
 // Draw patient table
 function drawTable() {
-
+    console.log("\nNHN       | Surname   | First Name | Date of birth | Sex | Allergies | Past Operations | Clinics | Medications | Known Ilnesses")
+    console.log("----------|-----------|------------|---------------|-----|-----------|-----------------|---------|-------------|---------------")
+    registry.forEach(patient => {
+        if(patient.NHN === selectedNHN) {
+            let row =
+                String(patient.NHN).padEnd(10) + "| " +
+                patient.lastName.padEnd(10) + "| " +
+                patient.firstName.padEnd(11) + "| " +
+                patient.dateOfBirth.padEnd(14) + "| " +
+                patient.sex.padEnd(4) + "| " +
+                String(patient.allergies).padEnd(10) + "| " +
+                String(patient.pastOps).padEnd(16) + "| " +
+                String(patient.clinics).padEnd(8) + "| " +
+                String(patient.meds).padEnd(12) + "| " +
+                String(patient.illnesses).padEnd(10) + "\n"
+            console.log(row)
+            rl.close()
+        }
+    })
 }
 
 inputNHN()
