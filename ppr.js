@@ -27,14 +27,20 @@ function savePatientRegistry() {
 
 // NHN input
 function inputNHN() {
+    let notFound = 0
     rl.question("Enter Patient NHN:", patientID => {
-        registry.forEach(patient, idx => {
-            if(patient.NHN === patientID) {
-                console.log("OO")
+        registry.forEach(patient => {
+            if(patient.NHN == patientID) {
+                console.log(patient.firstName, patient.lastName)
+                rl.close()
             } else {
-                console.log("MMM")
+                notFound ++
             }
         })
+        if(notFound === registry.length) {
+            console.log("No patient found with NHN: ", patientID)
+            inputNHN()
+        }
     })
 }
 
@@ -58,5 +64,4 @@ function drawTable() {
 
 }
 
-console.log(registry)
 inputNHN()
