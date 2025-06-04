@@ -63,7 +63,7 @@ function deletePatient() {
 
 // Draw patient table
 function drawTable() {
-    console.log("\nNHN       | Surname   | First Name | Date of birth | Sex | Allergies | Past Operations | Clinics | Medications | Known Ilnesses")
+    console.log("\nNHN       | Surname   | First Name | Date of birth | Sex | Allergies | Past Operations | Clinics | Medications | Known Illnesses")
     console.log("----------|-----------|------------|---------------|-----|-----------|-----------------|---------|-------------|---------------")
     registry.forEach(patient => {
         if(patient.NHN === selectedNHN) {
@@ -82,6 +82,7 @@ function drawTable() {
             rl.close()
         }
     })
+    console.log("\n1. Edit\n2. Delete\n3. View allergies\n4. View past operations\n5. View clinics\n6. View medications\n7. View known illnesses\nb. Back to NHN\nq. Quit")
 }
 
 inputNHN()
