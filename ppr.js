@@ -63,26 +63,80 @@ function deletePatient() {
 
 // Draw patient table
 function drawTable() {
-    console.log("\nNHN       | Surname   | First Name | Date of birth | Sex | Allergies | Past Operations | Clinics | Medications | Known Illnesses")
-    console.log("----------|-----------|------------|---------------|-----|-----------|-----------------|---------|-------------|---------------")
+    console.clear()
+    console.log("\nNHN       | Surname   | First Name | Date of birth | Sex | Allergies | Past Operations | Known Illnesses | Medications | Clinic ")
+    console.log("----------|-----------|------------|---------------|-----|-----------|-----------------|-----------------|-------------|--------")
     registry.forEach(patient => {
         if(patient.NHN === selectedNHN) {
+            // Setting true/false values for table
+            if(patient.illnesses !== "null") {
+                hasIllness = true
+            } else {
+                hasIllness = false
+            }
+
+            if(patient.allergies !== "null") {
+                hasAllergies = true
+            } else {
+                hasAllergies = false
+            }
+            
+            if(patient.meds !== "null") {
+                hasMeds = true
+            } else {
+                hasMeds = false
+            }
+
+            if(patient.pastOps !== "null") {
+                hasPastOps = true
+            } else {
+                hasPastOps = false
+            }
+
             let row =
                 String(patient.NHN).padEnd(10) + "| " +
                 patient.lastName.padEnd(10) + "| " +
                 patient.firstName.padEnd(11) + "| " +
                 patient.dateOfBirth.padEnd(14) + "| " +
                 patient.sex.padEnd(4) + "| " +
-                String(patient.allergies).padEnd(10) + "| " +
-                String(patient.pastOps).padEnd(16) + "| " +
-                String(patient.clinics).padEnd(8) + "| " +
-                String(patient.meds).padEnd(12) + "| " +
-                String(patient.illnesses).padEnd(10) + "\n"
+                String(hasAllergies).padEnd(10) + "| " +
+                String(hasPastOps).padEnd(16) + "| " +
+                String(hasIllness).padEnd(16) + "| " +
+                String(hasMeds).padEnd(12) + "| " +
+                patient.clinic + "\n"
             console.log(row)
-            rl.close()
         }
     })
-    console.log("\n1. Edit\n2. Delete\n3. View allergies\n4. View past operations\n5. View clinics\n6. View medications\n7. View known illnesses\nb. Back to NHN\nq. Quit")
+    rl.question("\n1. Edit\n2. Delete\n3. View allergies\n4. View past operations\n6. View medications\n7. View known illnesses\nb. Back to NHN\nq. Quit\n\n", selection => {
+        switch(selection) {
+            case "1":
+                break
+            case "2":
+                break
+            case "3":
+                break
+            case "4":
+                break
+            case "5":
+                break
+            case "6":
+                break
+            case "7":
+                break
+            case "b":
+                console.clear()
+                inputNHN()
+                break
+            case "q":
+                console.clear()
+                console.log("Goodbye!")
+                rl.close()
+                break
+            default:
+                console.log("Please enter a valid option")
+                drawTable()
+        }
+    })
 }
 
 inputNHN()
