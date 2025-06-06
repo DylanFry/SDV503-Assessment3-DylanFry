@@ -1,7 +1,6 @@
 // Importing Readline and FileSystem
 const readline = require('readline')
 const fs = require('fs')
-const { use } = require('react')
 
 // Readline setup
 const rl = readline.createInterface( {
@@ -106,16 +105,65 @@ function showDetailedList(type) {
     }
 }
 
-// Ask user what to do to data
-function userEdit() {
+// Data editing for allergies
+function userEditAllergies() {
+    console.clear()
+    console.log(currentPatientAllergies.join("\n"))
     rl.question("\n1. Add\n2. Delete\n3. Change\nb. Back\nq. Quit\nWhat would you like to do: ", choice => {
         switch(choice) {
             case "1":
-                return "add"
+                rl.question("Allergy to add: ", input => {
+                    registry.forEach((patient) => {
+                        if(patient.NHN === selectedNHN) {
+                            patient.allergies.push(input)
+                            savePatientRegistry()
+                            console.clear()
+                            drawTable()
+                            console.log(`${input} successfully added`)
+                        }
+                    })
+                })
+                break
             case "2":
-                return "del"
+                rl.question("Allergy to delete: ", input => {
+                    registry.forEach((patient) => {
+                        if(patient.NHN === selectedNHN) {
+                            if(patient.allergies.includes(input)) {
+                                patient.allergies.splice(patient.allergies.indexOf(input), 1)
+                                savePatientRegistry()
+                                console.clear()
+                                drawTable()
+                                console.log(`${input} successfully removed`)
+                            } else {
+                                console.clear()
+                                editPatientInfo()
+                                console.log("Allergy not found")
+                            }
+                        }
+                    })
+                })
+                break
             case "3":
-                return "change"
+                rl.question("Allergy to change: ", input => {
+                    registry.forEach((patient) => {
+                        if(patient.NHN === selectedNHN) {
+                            if(patient.allergies.includes(input)) {
+                                rl.question("Change allergy to: ", changeTo => {
+                                    patient.allergies.splice(patient.allergies.indexOf(input), 1, changeTo)
+                                    savePatientRegistry()
+                                    console.clear()
+                                    drawTable()
+                                    console.log(`${input} successfully changed to ${changeTo}`)
+                                })
+                            } else {
+                                console.clear()
+                                editPatientInfo()
+                                console.log("Allergy not found")
+                            }
+                        }
+                    })
+                })
+                break
             case "b":
                 console.clear()
                 editPatientInfo()
@@ -133,28 +181,292 @@ function userEdit() {
     })
 }
 
-// Editing patient info
-function editPatientInfo() {
-    showPatientProfile()
-    rl.question("\nInformation to edit:\n1. First Name\n2. Surname\n3. Allergies\n4. Past Operations\n5. Known Illnesses\n6. Medications\n7. Clinic\nb. Back to profile\nq. Quit", choice => {
+// Data editing for Operations
+function userEditOperations() {
+    console.clear()
+    console.log(currentPatientOperations.join("\n"))
+    rl.question("\n1. Add\n2. Delete\n3. Change\nb. Back\nq. Quit\nWhat would you like to do: ", choice => {
         switch(choice) {
             case "1":
+                rl.question("Operation to add: ", input => {
+                    registry.forEach((patient) => {
+                        if(patient.NHN === selectedNHN) {
+                            patient.pastOps.push(input)
+                            savePatientRegistry()
+                            console.clear()
+                            drawTable()
+                            console.log(`${input} successfully added`)
+                        }
+                    })
+                })
                 break
             case "2":
+                rl.question("Operation to delete: ", input => {
+                    registry.forEach((patient) => {
+                        if(patient.NHN === selectedNHN) {
+                            if(patient.pastOps.includes(input)) {
+                                patient.pastOps.splice(patient.pastOps.indexOf(input), 1)
+                                savePatientRegistry()
+                                console.clear()
+                                drawTable()
+                                console.log(`${input} successfully removed`)
+                            } else {
+                                console.clear()
+                                editPatientInfo()
+                                console.log("Operation not found")
+                            }
+                        }
+                    })
+                })
                 break
             case "3":
+                rl.question("Operation to change: ", input => {
+                    registry.forEach((patient) => {
+                        if(patient.NHN === selectedNHN) {
+                            if(patient.pastOps.includes(input)) {
+                                rl.question("Change operation to: ", changeTo => {
+                                    patient.pastOps.splice(patient.pastOps.indexOf(input), 1, changeTo)
+                                    savePatientRegistry()
+                                    console.clear()
+                                    drawTable()
+                                    console.log(`${input} successfully changed to ${changeTo}`)
+                                })
+                            } else {
+                                console.clear()
+                                editPatientInfo()
+                                console.log("Operation not found")
+                            }
+                        }
+                    })
+                })
+                break
+            case "b":
+                console.clear()
+                editPatientInfo()
+                break
+            case "q":
+                console.clear()
+                console.log("Goodbye!")
+                rl.close()
+                break
+            default:
+                console.clear()
                 userEdit()
+                console.log("Please select a valid option")
+        }
+    })
+}
+
+// Data editing for illness
+function userEditIllnesses() {
+    console.clear()
+    console.log(currentPatientIllness.join("\n"))
+    rl.question("\n1. Add\n2. Delete\n3. Change\nb. Back\nq. Quit\nWhat would you like to do: ", choice => {
+        switch(choice) {
+            case "1":
+                rl.question("Illness to add: ", input => {
+                    registry.forEach((patient) => {
+                        if(patient.NHN === selectedNHN) {
+                            patient.illnesses.push(input)
+                            savePatientRegistry()
+                            console.clear()
+                            drawTable()
+                            console.log(`${input} successfully added`)
+                        }
+                    })
+                })
+                break
+            case "2":
+                rl.question("Illness to delete: ", input => {
+                    registry.forEach((patient) => {
+                        if(patient.NHN === selectedNHN) {
+                            if(patient.illnesses.includes(input)) {
+                                patient.illnesses.splice(patient.illnesses.indexOf(input), 1)
+                                savePatientRegistry()
+                                console.clear()
+                                drawTable()
+                                console.log(`${input} successfully removed`)
+                            } else {
+                                console.clear()
+                                editPatientInfo()
+                                console.log("Illness not found")
+                            }
+                        }
+                    })
+                })
+                break
+            case "3":
+                rl.question("Illness to change: ", input => {
+                    registry.forEach((patient) => {
+                        if(patient.NHN === selectedNHN) {
+                            if(patient.illnesses.includes(input)) {
+                                rl.question("Change illness to: ", changeTo => {
+                                    patient.illnesses.splice(patient.illnesses.indexOf(input), 1, changeTo)
+                                    savePatientRegistry()
+                                    console.clear()
+                                    drawTable()
+                                    console.log(`${input} successfully changed to ${changeTo}`)
+                                })
+                            } else {
+                                console.clear()
+                                editPatientInfo()
+                                console.log("Illness not found")
+                            }
+                        }
+                    })
+                })
+                break
+            case "b":
+                console.clear()
+                editPatientInfo()
+                break
+            case "q":
+                console.clear()
+                console.log("Goodbye!")
+                rl.close()
+                break
+            default:
+                console.clear()
+                userEdit()
+                console.log("Please select a valid option")
+        }
+    })
+}
+
+// Data editing for Operations
+function userEditMedications() {
+    console.clear()
+    console.log(currentPatientMedications.join("\n"))
+    rl.question("\n1. Add\n2. Delete\n3. Change\nb. Back\nq. Quit\nWhat would you like to do: ", choice => {
+        switch(choice) {
+            case "1":
+                rl.question("Medication to add: ", input => {
+                    registry.forEach((patient) => {
+                        if(patient.NHN === selectedNHN) {
+                            patient.meds.push(input)
+                            savePatientRegistry()
+                            console.clear()
+                            drawTable()
+                            console.log(`${input} successfully added`)
+                        }
+                    })
+                })
+                break
+            case "2":
+                rl.question("Medication to delete: ", input => {
+                    registry.forEach((patient) => {
+                        if(patient.NHN === selectedNHN) {
+                            if(patient.meds.includes(input)) {
+                                patient.meds.splice(patient.meds.indexOf(input), 1)
+                                savePatientRegistry()
+                                console.clear()
+                                drawTable()
+                                console.log(`${input} successfully removed`)
+                            } else {
+                                console.clear()
+                                editPatientInfo()
+                                console.log("Medication not found")
+                            }
+                        }
+                    })
+                })
+                break
+            case "3":
+                rl.question("Medication to change: ", input => {
+                    registry.forEach((patient) => {
+                        if(patient.NHN === selectedNHN) {
+                            if(patient.meds.includes(input)) {
+                                rl.question("Change medication to: ", changeTo => {
+                                    patient.meds.splice(patient.meds.indexOf(input), 1, changeTo)
+                                    savePatientRegistry()
+                                    console.clear()
+                                    drawTable()
+                                    console.log(`${input} successfully changed to ${changeTo}`)
+                                })
+                            } else {
+                                console.clear()
+                                editPatientInfo()
+                                console.log("Medication not found")
+                            }
+                        }
+                    })
+                })
+                break
+            case "b":
+                console.clear()
+                editPatientInfo()
+                break
+            case "q":
+                console.clear()
+                console.log("Goodbye!")
+                rl.close()
+                break
+            default:
+                console.clear()
+                userEdit()
+                console.log("Please select a valid option")
+        }
+    })
+}
+
+// Editing patient info menu
+function editPatientInfo() {
+    console.clear()
+    showPatientProfile()
+    rl.question("\nInformation to edit:\n1. First Name\n2. Surname\n3. Allergies\n4. Past Operations\n5. Known Illnesses\n6. Medications\n7. Clinic\nb. Back to profile\nq. Quit\n", choice => {
+        switch(choice) {
+            case "1":
+                registry.forEach((patient) => {
+                    if(patient.NHN === selectedNHN) {
+                        rl.question("Change first name to: ", changeTo => {
+                                patient.firstName = changeTo
+                                    savePatientRegistry()
+                                    console.clear()
+                                    drawTable()
+                                    console.log(`First name successfully changed to ${changeTo}`)
+                        })
+                    }
+                })
+                break
+            case "2":
+                registry.forEach((patient) => {
+                    if(patient.NHN === selectedNHN) {
+                        rl.question("Change surname to: ", changeTo => {
+                                patient.lastName = changeTo
+                                    savePatientRegistry()
+                                    console.clear()
+                                    drawTable()
+                                    console.log(`Surname successfully changed to ${changeTo}`)
+                        })
+                    }
+                })
+                break
+            case "3":
+                console.log(currentPatientAllergies.join("\n"))
+                userEditAllergies()
                 break
             case "4":
-                userEdit()
+                console.log(currentPatientOperations.join("\n"))
+                userEditOperations()
                 break
             case "5":
-                userEdit()
+                userEditIllnesses()
                 break
             case "6":
-                userEdit()
+                userEditMedications()
                 break
             case "7":
+                registry.forEach((patient) => {
+                    if(patient.NHN === selectedNHN) {
+                        rl.question("Change clinic to: ", changeTo => {
+                                patient.clinic = changeTo
+                                    savePatientRegistry()
+                                    console.clear()
+                                    drawTable()
+                                    console.log(`Clinic successfully changed to ${changeTo}`)
+                        })
+                    }
+                })
                 break
             case "b":
                 console.clear()

@@ -18,11 +18,11 @@
   {
     "NHN": 2,
     "firstName": "Angelika",
-    "lastName": "Purle",
+    "lastName": "Purple",
     "dateOfBirth": "05/05/1984",
     "sex": "F",
     "allergies": [
-      "Peanuts"
+      "Almonds"
     ],
     "pastOps": null,
     "clinic": "UNIVERSITY HOSPITAL",
