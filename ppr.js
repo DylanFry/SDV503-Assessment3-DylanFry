@@ -63,7 +63,7 @@ function showDetailedList(type) {                                               
             if(currentPatientAllergies != null) {                                                     // If the current list if not empty
                 console.clear()
                 drawTable()
-                console.log("Allergies: \n", currentPatientAllergies.join("\n"))    // Show a list of the allergies in the patients information
+                console.log("Allergies: \n-", currentPatientAllergies.join("\n- "))    // Show a list of the allergies in the patients information
             } else {                                                                                                 // Otherwise
                 console.clear()
                 drawTable()
@@ -74,7 +74,7 @@ function showDetailedList(type) {                                               
             if(currentPatientOperations != null) {
                 console.clear()
                 drawTable()
-                console.log("Operations: \n", currentPatientOperations.join("\n"))
+                console.log("Operations: \n-", currentPatientOperations.join("\n- "))
             } else {
                 console.clear()
                 drawTable()
@@ -85,7 +85,7 @@ function showDetailedList(type) {                                               
             if(currentPatientMedications != null) {
                 console.clear()
                 drawTable()
-                console.log("Medications: \n", currentPatientMedications.join("\n"))
+                console.log("Medications: \n-", currentPatientMedications.join("\n- "))
             } else {
                 console.clear()
                 drawTable()
@@ -96,7 +96,7 @@ function showDetailedList(type) {                                               
             if(currentPatientIllness != null) {
                 console.clear()
                 drawTable()
-                console.log("Illnesses: \n", currentPatientIllness.join("\n"))
+                console.log("Illnesses: \n-", currentPatientIllness.join("\n- "))
             } else {
                 console.clear()
                 drawTable()
@@ -114,8 +114,7 @@ function userEditAllergies() {
     console.clear()
 
     // List the patients allergies
-    console.log("Allergies:\n")
-    console.log(currentPatientAllergies.join("\n"))
+    console.log("Allergies:\n-", currentPatientAllergies.join("\n- "))
 
     rl.question("\n1. Add\n2. Delete\n3. Change\nb. Back\nq. Quit\nWhat would you like to do: ", choice => {    // Ask the user how they want to edit the data
         switch(choice) {
@@ -138,6 +137,9 @@ function userEditAllergies() {
                         if(patient.NHN === selectedNHN) {
                             if(patient.allergies.includes(input)) {                                                                                         // If the patient has the input allergy
                                 patient.allergies.splice(patient.allergies.indexOf(input), 1)                                                  //  Delete it from the array
+                                if(patient.allergies.length <= 0) {                                                                                            // Checks if the array has become empty
+                                    patient.allergies = null                                                                                                        // If it is, set the value to null instead
+                                }
                                 savePatientRegistry()                                                                                                             // Save the data to the registry
                                 console.clear()
                                 drawTable()
@@ -183,7 +185,7 @@ function userEditAllergies() {
                 break
             default:                                                                                                                                                         // If the user's input is not one of the valid options
                 console.clear()
-                userEdit()                                                                                                                                                 // Re-prompt the user for their choice
+                userEditAllergies()                                                                                                                                   // Re-prompt the user for their choice
                 console.log("Please select a valid option")                                                                                            // Tell the user their input was invalid 
         }
     })
@@ -194,8 +196,7 @@ function userEditOperations() {
     console.clear()
 
     // Display list of patient operations
-    console.log("Past Operations:\n")
-    console.log(currentPatientOperations.join("\n"))
+    console.log("Past Operations:\n-", currentPatientOperations.join("\n- "))
 
     rl.question("\n1. Add\n2. Delete\n3. Change\nb. Back\nq. Quit\nWhat would you like to do: ", choice => {
         switch(choice) {
@@ -218,6 +219,9 @@ function userEditOperations() {
                         if(patient.NHN === selectedNHN) {
                             if(patient.pastOps.includes(input)) {
                                 patient.pastOps.splice(patient.pastOps.indexOf(input), 1)
+                                if(patient.pastOps.length <= 0) {
+                                    patient.pastOps = null
+                                }
                                 savePatientRegistry()
                                 console.clear()
                                 drawTable()
@@ -263,7 +267,7 @@ function userEditOperations() {
                 break
             default:
                 console.clear()
-                userEdit() 
+                userEditOperations() 
                 console.log("Please select a valid option")
         }
     })
@@ -274,8 +278,7 @@ function userEditIllnesses() {
     console.clear()
 
     // List the patients known illnesses
-    console.log("Known illnesses:\n")
-    console.log(currentPatientIllness.join("\n"))
+    console.log("Known illnesses:\n-", currentPatientIllness.join("\n- "))
 
     rl.question("\n1. Add\n2. Delete\n3. Change\nb. Back\nq. Quit\nWhat would you like to do: ", choice => {
         switch(choice) {
@@ -298,6 +301,9 @@ function userEditIllnesses() {
                         if(patient.NHN === selectedNHN) {
                             if(patient.illnesses.includes(input)) {
                                 patient.illnesses.splice(patient.illnesses.indexOf(input), 1)
+                                if(patient.illnesses.length <= 0) {
+                                    patient.illnesses = null
+                                }
                                 savePatientRegistry()
                                 console.clear()
                                 drawTable()
@@ -343,7 +349,7 @@ function userEditIllnesses() {
                 break
             default:
                 console.clear()
-                userEdit()
+                userEditIllnesses()
                 console.log("Please select a valid option")
         }
     })
@@ -354,8 +360,7 @@ function userEditMedications() {
     console.clear()
 
     // List patient medication
-    console.log("Medications:\n")
-    console.log(currentPatientMedications.join("\n"))
+    console.log("Medications:\n-", currentPatientMedications.join("\n- "))
 
     rl.question("\n1. Add\n2. Delete\n3. Change\nb. Back\nq. Quit\nWhat would you like to do: ", choice => {
         switch(choice) {
@@ -378,6 +383,9 @@ function userEditMedications() {
                         if(patient.NHN === selectedNHN) {
                             if(patient.meds.includes(input)) {
                                 patient.meds.splice(patient.meds.indexOf(input), 1)
+                                if(patient.meds.length <= 0) {
+                                    patient.meds = null
+                                }
                                 savePatientRegistry()
                                 console.clear()
                                 drawTable()
@@ -423,7 +431,7 @@ function userEditMedications() {
                 break
             default:
                 console.clear()
-                userEdit()
+                userEditMedications()
                 console.log("Please select a valid option")
         }
     })
@@ -436,7 +444,7 @@ function addFirstEntry(type) {
             rl.question("Allergy to add: ", input => {
                 registry.forEach((patient) => {
                     if(patient.NHN === selectedNHN) {
-                        patient.allergies.push(input)
+                        patient.allergies = [input]
                         savePatientRegistry()
                         console.clear()
                         drawTable()
@@ -450,7 +458,7 @@ function addFirstEntry(type) {
             rl.question("Operation to add: ", input => {
                 registry.forEach((patient) => {
                     if(patient.NHN === selectedNHN) {
-                        patient.pastOps.push(input)
+                        patient.pastOps = [input]
                         savePatientRegistry()
                         console.clear()
                         drawTable()
@@ -464,7 +472,7 @@ function addFirstEntry(type) {
             rl.question("Medication to add: ", input => {
                 registry.forEach((patient) => {
                     if(patient.NHN === selectedNHN) {
-                        patient.med.push(input)
+                        patient.med = [input]
                         savePatientRegistry()
                         console.clear()
                         drawTable()
@@ -478,7 +486,7 @@ function addFirstEntry(type) {
             rl.question("Illness to add: ", input => {
                 registry.forEach((patient) => {
                     if(patient.NHN === selectedNHN) {
-                        patient.illnesses.push(input)
+                        patient.illnesses = [input]
                         savePatientRegistry()
                         console.clear()
                         drawTable()
@@ -609,12 +617,12 @@ function deletePatient() {
     })
 }
 
-// Draw patient table
+// Patient table screen
 function drawTable() {
     showPatientProfile()                                    // Draw the patient information table
 
     // Ask the user what they want to do
-    rl.question("\n1. Edit\n2. Delete\n3. View allergies\n4. View past operations\n5. View known illnesses\n6. View medications\nb. Back to NHN\nq. Quit\n\n", selection => {
+    rl.question("\n1. Edit\n2. Delete Patient\n3. View allergies\n4. View past operations\n5. View known illnesses\n6. View medications\nb. Back to NHN\nq. Quit\n\n", selection => {
         switch(selection) {
             case "1":                                                // If the user chooses "1. Edit", take them to the edit page
                 editPatientInfo()
@@ -651,10 +659,11 @@ function drawTable() {
     })
 }
 
+// Drawing patient table
 function showPatientProfile() {
     console.log("--- Patient Registry System ---")                                                                                                                                                                          // App title
-    console.log("\nNHN       | Surname   | First Name | Date of birth | Sex | Allergies | Past Operations | Known Illnesses | Medications | Clinic ")                 // Headings
-    console.log("----------|-----------|------------|---------------|-----|-----------|-----------------|-----------------|-------------|--------") // Seperaters
+    console.log("\nNHN       | Surname         | First Name      | Date of birth | Sex | Allergies | Past Operations | Known Illnesses | Medications | Clinic ")                 // Headings
+    console.log("----------|-----------------|-----------------|---------------|-----|-----------|-----------------|-----------------|-------------|--------") // Seperaters
     registry.forEach(patient => {
         if(patient.NHN === selectedNHN) {
 
@@ -694,8 +703,8 @@ function showPatientProfile() {
             // Draw the table
             let row =
                 String(patient.NHN).padEnd(10) + "| " +
-                patient.lastName.padEnd(10) + "| " +
-                patient.firstName.padEnd(11) + "| " +
+                patient.lastName.padEnd(16) + "| " +
+                patient.firstName.padEnd(16) + "| " +
                 patient.dateOfBirth.padEnd(14) + "| " +
                 patient.sex.padEnd(4) + "| " +
                 String(hasAllergies).padEnd(10) + "| " +
