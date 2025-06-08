@@ -429,6 +429,72 @@ function userEditMedications() {
     })
 }
 
+// Adding an entry to an empty list
+function addFirstEntry(type) {
+    switch(type) {
+        case "allergy": 
+            rl.question("Allergy to add: ", input => {
+                registry.forEach((patient) => {
+                    if(patient.NHN === selectedNHN) {
+                        patient.allergies.push(input)
+                        savePatientRegistry()
+                        console.clear()
+                        drawTable()
+                        console.log(`${input} successfully added`)
+                    }
+                })
+            })
+            break
+
+        case "operation": 
+            rl.question("Operation to add: ", input => {
+                registry.forEach((patient) => {
+                    if(patient.NHN === selectedNHN) {
+                        patient.pastOps.push(input)
+                        savePatientRegistry()
+                        console.clear()
+                        drawTable()
+                        console.log(`${input} successfully added`)
+                    }
+                })
+            })
+            break
+
+        case "meds": 
+            rl.question("Medication to add: ", input => {
+                registry.forEach((patient) => {
+                    if(patient.NHN === selectedNHN) {
+                        patient.med.push(input)
+                        savePatientRegistry()
+                        console.clear()
+                        drawTable()
+                        console.log(`${input} successfully added`)
+                    }
+                })
+            })
+            break
+
+        case "illness": 
+            rl.question("Illness to add: ", input => {
+                registry.forEach((patient) => {
+                    if(patient.NHN === selectedNHN) {
+                        patient.illnesses.push(input)
+                        savePatientRegistry()
+                        console.clear()
+                        drawTable()
+                        console.log(`${input} successfully added`)
+                    }
+                })
+            })
+            break
+        
+        default:
+            console.clear()
+            editPatientInfo()
+            console.log("No valid data type found")
+    }
+}
+
 // Editing patient info menu
 function editPatientInfo() {
     console.clear()
@@ -464,16 +530,32 @@ function editPatientInfo() {
                 })
                 break
             case "3":
-                userEditAllergies()
+                if(currentPatientAllergies != null) {                                                                           // If the list is not empty
+                    userEditAllergies()                                                                                                 // Go to the edit page
+                } else {                                                                                                                        // Otherwise
+                    addFirstEntry("allergy")                                                                                        // Go to the first entry page
+                }
                 break
             case "4":
-                userEditOperations()
+                if(currentPatientOperations != null) {
+                    userEditOperations()
+                } else {
+                    addFirstEntry("operation")
+                }
                 break
             case "5":
-                userEditIllnesses()
+                if(currentPatientIllness !== null) {
+                    userEditIllnesses()
+                } else {
+                    addFirstEntry("illness")
+                }
                 break
             case "6":
-                userEditMedications()
+                if(currentPatientMedications !== null) {
+                    userEditMedications()
+                } else {
+                    addFirstEntry("meds")
+                }
                 break
             case "7":
                 registry.forEach((patient) => {                                                                             // Find the patient in the registry
