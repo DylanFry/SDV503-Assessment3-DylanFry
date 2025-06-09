@@ -516,10 +516,10 @@ function editPatientInfo() {
                     if(patient.NHN === selectedNHN) {
                         rl.question("Change first name to: ", changeTo => {                                     // Ask the user what they want to change the name to
                                 patient.firstName = changeTo                                                               // Change the old name to the new name
-                                    savePatientRegistry()
-                                    console.clear()
-                                    drawTable()
-                                    console.log(`First name successfully changed to ${changeTo}`)   // Tell the user the name was successfully changed
+                                savePatientRegistry()
+                                console.clear()
+                                drawTable()
+                                console.log(`First name successfully changed to ${changeTo}`)   // Tell the user the name was successfully changed
                         })
                     }
                 })
@@ -529,10 +529,10 @@ function editPatientInfo() {
                     if(patient.NHN === selectedNHN) {
                         rl.question("Change surname to: ", changeTo => {                                          // Ask the user what they want to change the surname to
                                 patient.lastName = changeTo                                                                   // Change the old surname to the new name
-                                    savePatientRegistry()
-                                    console.clear()
-                                    drawTable()
-                                    console.log(`Surname successfully changed to ${changeTo}`)          // Tell the user the surname was successfully updated
+                                savePatientRegistry()
+                                console.clear()
+                                drawTable()
+                                console.log(`Surname successfully changed to ${changeTo}`)          // Tell the user the surname was successfully updated
                         })
                     }
                 })
@@ -570,10 +570,10 @@ function editPatientInfo() {
                     if(patient.NHN === selectedNHN) {
                         rl.question("Change clinic to: ", changeTo => {                                           // Ask the user what they want to change the clinic name to
                                 patient.clinic = changeTo                                                                    // Change the old clinic to the new clinic
-                                    savePatientRegistry()
-                                    console.clear()
-                                    drawTable()
-                                    console.log(`Clinic successfully changed to ${changeTo}`)          // Tell the user that the clinic was renamed successfully
+                                savePatientRegistry()
+                                console.clear()
+                                drawTable()
+                                console.log(`Clinic successfully changed to ${changeTo}`)          // Tell the user that the clinic was renamed successfully
                         })
                     }
                 })
