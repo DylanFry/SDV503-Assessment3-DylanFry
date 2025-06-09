@@ -76,3 +76,25 @@ This diagram shows:
 - Use PascalCase for class names
 - Use UPPERCASE for constants
 - Use descriptive and meaningful names
+## List of Names
+### Variables
+- selectedNHN: Storing the users NHN input for later use
+- notFound: A variable for tracking how many of the patients don't have the users NHN input
+- FILE: A constant refrence to the file being read by the program for the patient registry
+- registry: The array being used to import and read the .json file data
+### Functions
+- savePatientRegistry: Saves the data from the registry array to the .json file
+- inputNHN: Takes a user input of a number and looks for it in the registry
+- showDetailedList: Shows a list of items based on the type given when called
+- userEditAllergies: Allows the user to add, remove or change an allergy on the patients registry
+- userEditOperations: Allows the user to add, remove or change an operation on the patients registry
+- userEditMedications: Allows the user to add, remove or change a medication on the patients registry
+- addFirstEntry: Prompts the user to add a first item to the list given when called
+- editPatientInfo: The main menu for navigating between editing menus
+- deletePatient: Confirms with the user and then deletes the patient currently being viewed
+- drawTable: Logs the main menu
+- showPatientProfile: Draws the patient profile table
+## Comment Screenshots
+![image](https://github.com/user-attachments/assets/70bb5d69-7b8a-4434-8676-a2f828052e7e)
+![image](https://github.com/user-attachments/assets/06517686-32a7-4d5b-a737-7499484ec91a)
+![image](https://github.com/user-attachments/assets/e80cfa75-8439-475f-8a1e-f54396ad1c67)
