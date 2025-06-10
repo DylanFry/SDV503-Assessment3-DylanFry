@@ -4,6 +4,7 @@
 ## User Guide
 
 # Preface
+## This is just the user guide, any development documentation can be found [here](AssessmentDoc.md)
 ## This guide assumes you are using Windows 11 as your operating system. If you are not, there may be differences for your process.
 
 # Set-up
@@ -25,7 +26,7 @@
 
 > ## Running the program
 >
-> To run the program, make sure the terminal is open by pressing the "ctrl" and "J" keys at the same time. Then, in the terminal that you just opened, type "node .\ppr.js" and press enter, the program should then run.
+> To run the program, make sure the terminal is open by pressing the "ctrl" and "J" keys at the same time. Then, in the terminal that you just opened, type "node ppr.js" and press enter, the program should then run.
 
 # Using the program
 The program uses the number keys (1-9) and the "Q" and "B" keys to operate. Simply follow the on screen prompts and you should be able to use the program.
