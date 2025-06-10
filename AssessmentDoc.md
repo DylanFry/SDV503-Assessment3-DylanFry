@@ -63,7 +63,7 @@ This program should be approved as it meets the requirements set forth by the He
 
 ## Workflow Diagram
 
-![PPR Diagram V1 drawio](https://github.com/user-attachments/assets/88c083f2-1e8c-4631-8af0-dda5e2b92c2e)
+![PPR Diagram V2](https://github.com/user-attachments/assets/4962dc98-17ae-448b-80e2-03a66ee26143)
 
 This diagram shows:
 - The process begins by having the user input a patient's National Health Number (NHN)
@@ -84,7 +84,8 @@ This diagram shows:
   - Otherwise, the user will be prompted with a message that no list can be displayed and taken back to the table
 - If the use wants to edit the information, they will be given a list of the information points which can be edited (e.g. Name, Allergies, etc.)
   - Once the user has selected the point to edit, they will be asked what they wish to change it to. The information will then be changed and a confirmation message will tell them what information has been changed and what to
-  - At any point in this process, the user can go back to the previous page
+  - At any point in this process, the user can 
+go back to the previous page
 - If the user wishes to delete the patient profile, they will prompted with a comfirmation window
   - If the user inputs "y", the profile will be deleted from the database and the user will be redirected to the NHN input page
     
