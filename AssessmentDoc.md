@@ -115,7 +115,7 @@ go back to the previous page
 
 ![image](https://github.com/user-attachments/assets/f90cad21-295e-46bf-a783-6eb67c486363)
 
-
+The table becomes offset if the user inputs a name that is too long. I have increased the padding on the names to be 16 characters. This should be enough for most names to fit.
 
 ### Empty lists not updating
 
@@ -124,12 +124,19 @@ go back to the previous page
 
 ![image](https://github.com/user-attachments/assets/549f5d94-8464-47e5-a1b5-f233b3e6b036)
 
+The lists don't update when all items have been removed. By which I mean the program still thinks there are items in the list when there aren't. To find the cause of this, I began by looking back over my code to remove the item from the array.
+This didn't seem to have any issue, as all I was doing was splicing the selected item from the array. I had noticed that when the item was removed, the true/false text didn't change. This led me to check the code that updates the boolean value.
+This was where I found the issue. The boolean, and by extension the list, was checking if the value of the list was null. But since the removal code only removed the item from the array and didn't make it equal to null, the check thought the array
+was still populated. I confirmed this by going to the .json file and checking the users value for allergies. Sure enough, the value was an empty array instead of null. To solve this problem, I added a check after the user removes the item but before the .json is updated
+, if the length of the list is less than or equal to 0, set the value to null instead. After testing again, the code now acts as expected.
+
 ### Empty lists can't be edited
 
 ![image](https://github.com/user-attachments/assets/e442649b-794c-48a4-b2b2-968b52050dcc)
 
 ![image](https://github.com/user-attachments/assets/789d2915-cffa-4e40-a795-7dbcde7ede2a)
 
+This was the first and only actual crash I experienced while testing the program. The error message tells me that there is an error reading null on line 457 of the code. Checking this line, it is the code responsible for writing out the array of values. I implied from the error message, the error I had just fixed and the line the error was occuring on that the issue was the program trying to treat the null value like an array, which isn't possible. I thought I had implemented a check for this but that was only present on the show list functions, not the edit functions. This was a fairly simple problem to solve as all I had to do was check if the value was null before calling the edit function. If the value doesn't exist, only prompt the user to add, otherwise, give them the full menu. This solved the problem.
 
 ## List of Names
 
